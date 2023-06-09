@@ -1,0 +1,21 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  list-files:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: List files under ${HOME}
+        run: ls -la ${HOME}
+      - name: List files under ${HOME}/.m2/
+        run: ls -la ${HOME}/.m2/
+      - name: Cat ${HOME}/.m2/settings.xml
+        run: cat ${HOME}/.m2/settings.xml
+
